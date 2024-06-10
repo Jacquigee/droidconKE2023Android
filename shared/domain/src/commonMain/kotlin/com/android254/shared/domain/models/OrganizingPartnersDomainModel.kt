@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 DroidconKE
+ * Copyright 2024 DroidconKE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,15 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.android254.domain.repos
+package com.android254.shared.domain.models
 
-import com.android254.domain.models.Speaker
-import kotlinx.coroutines.flow.Flow
+data class OrganizingPartnersDomainModel(
+    val organizerName: String,
+    val organizerLogoUrl: String
+)
 
-interface SpeakersRepo {
-    fun fetchSpeakers(): Flow<List<Speaker>>
-    suspend fun fetchSpeakerCount(): Flow<Int>
-    suspend fun getSpeakerByName(name: String): Flow<Speaker>
-
-    suspend fun syncSpeakers()
-}
+data class SponsorsDomainModel(
+    val sponsorName: String,
+    val sponsorLogoUrl: String,
+    val link: String,
+    val sponsorType: String,
+    val createdAt: String
+)

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 DroidconKE
+ * Copyright 2024 DroidconKE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,24 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ke.droidcon.kotlin.datasource.local.dao
+package com.android254.shared.domain.repos
 
-import androidx.room.Dao
-import androidx.room.Query
-import ke.droidcon.kotlin.datasource.local.model.SpeakerEntity
+import com.android254.shared.domain.models.HomeDetailsDomainModel
 import kotlinx.coroutines.flow.Flow
 
-@Dao
-interface SpeakerDao : BaseDao<SpeakerEntity> {
-    @Query("SELECT * FROM speakers")
-    fun fetchSpeakers(): Flow<List<SpeakerEntity>>
-
-    @Query("SELECT COUNT(*) FROM speakers")
-    fun fetchSpeakerCount(): Flow<Int>
-
-    @Query("SELECT * FROM speakers WHERE name = :name")
-    fun getSpeakerByName(name: String): Flow<SpeakerEntity>
-
-    @Query("DELETE FROM speakers")
-    suspend fun deleteAll()
+interface HomeRepository {
+    fun fetchHomeDetails(): Flow<HomeDetailsDomainModel>
 }
